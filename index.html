@@ -3,193 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX STUDIO | Creative & Academic</title>
+    <title>Кулаков Роман | APEX STUDIO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg: #f8f9fa; /* Светлый фон */
+            --bg: #fcfcfc;
             --card: #ffffff;
-            --text-main: #1a1a1a;
-            --text-secondary: #666666;
-            --accent: #1a1a1a; /* Черные акценты для минимализма */
-            --border: #e1e1e1;
+            --text-main: #111111;
+            --text-secondary: #555555;
+            --accent: #000000;
+            --border: #eeeeee;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-        }
+        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; }
 
         header {
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--card);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0; z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
         }
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+        .logo-box img { width: 30px; }
+        .logo-box span { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 1px; }
 
-        .logo-box { display: flex; align-items: center; gap: 10px; }
-        .logo-box img { width: 35px; height: 35px; }
-        .logo-box span { font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 1px; }
-
-        .hero {
-            padding: 100px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+        .founder-section {
+            padding: 60px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-bottom: 1px solid var(--border);
         }
+        .founder-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            flex-shrink: 0;
+        }
+        .founder-info h2 { font-size: 1.8rem; margin-bottom: 5px; }
+        .founder-info p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
+        .founder-info .city { display: flex; align-items: center; gap: 5px; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .email-link { color: var(--text-main); text-decoration: none; font-weight: 600; border-bottom: 1px solid #ccc; }
 
-        .main-wolf { width: 180px; margin-bottom: 30px; }
-
-        h1 { font-family: 'Orbitron'; font-size: clamp(28px, 5vw, 45px); margin-bottom: 15px; letter-spacing: 2px; }
-        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; }
-
-        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .hero { padding: 80px 20px; text-align: center; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(24px, 5vw, 40px); margin-bottom: 20px; }
+        
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
         .btn {
-            padding: 14px 28px;
+            padding: 12px 25px;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
+            border: 1px solid var(--accent);
             border-radius: 2px;
         }
-        .btn-dark { background: var(--accent); color: white; border: 1px solid var(--accent); }
-        .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        .btn-dark { background: var(--accent); color: white; }
+        .btn-outline { color: var(--accent); }
+        .btn:hover { background: #333; color: white; transform: translateY(-2px); }
 
-        .section-title { text-align: center; font-family: 'Orbitron'; margin-bottom: 50px; font-size: 1.5rem; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-
-        .category-card {
-            background: var(--card);
-            padding: 40px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
+        
+        .category-card h2 { 
+            font-family: 'Orbitron'; 
+            font-size: 0.9rem; 
+            margin-bottom: 30px; 
+            padding-left: 10px;
+            border-left: 4px solid var(--accent); 
         }
-
-        .category-card h2 { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 30px; border-bottom: 2px solid var(--accent); display: inline-block; }
 
         .service-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
+            display: flex; gap: 15px; margin-bottom: 30px;
+            padding: 20px; background: #fff; border: 1px solid var(--border);
+            transition: 0.3s;
         }
-
-        .icon { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
-
-        .service-info h4 { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .service-info h4 span { color: #000; background: #eee; padding: 2px 8px; font-size: 12px; }
+        .service-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        .icon { color: var(--accent); flex-shrink: 0; }
+        .service-info h4 { font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .service-info .price-tag { background: #f0f0f0; padding: 2px 8px; font-size: 11px; margin-left: 10px; flex-shrink: 0; }
         .service-info p { font-size: 13px; color: var(--text-secondary); margin-top: 5px; }
 
-        footer { text-align: center; padding: 40px; color: #999; font-size: 11px; font-family: 'Orbitron'; }
+        footer { text-align: center; padding: 60px; color: #bbb; font-family: 'Orbitron'; font-size: 10px; letter-spacing: 2px; }
 
-        @media (max-width: 600px) { .btn { width: 100%; } }
+        @media (max-width: 768px) {
+            .founder-section { flex-direction: column; text-align: center; }
+            .founder-photo { width: 120px; height: 120px; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-box">
+    <a href="#" class="logo-box">
         <img src="logo.png" alt="Logo">
         <span>APEX STUDIO</span>
-    </div>
+    </a>
 </header>
 
+<section class="founder-section">
+    <img src="me.jpg" alt="Кулаков Роман" class="founder-photo" onerror="this.src='https://via.placeholder.com/150?text=PHOTO'">
+    <div class="founder-info">
+        <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 10px; margin-bottom: 5px; color: #888;">Главный дизайнер / Основатель</p>
+        <h2>Кулаков Роман Александрович</h2>
+        <div class="city"><i data-lucide="map-pin" size="14"></i> г. Красноярск</div>
+        <p style="margin-top: 15px;">Связь по почте: <a href="mailto:atrum1976@gmail.com" class="email-link">atrum1976@gmail.com</a></p>
+    </div>
+</section>
+
 <section class="hero">
-    <img src="logo.png" alt="Apex Wolf" class="main-wolf">
-    <h1>APEX CREATIVE LEVEL</h1>
-    <p>Профессиональный дизайн и академическая помощь. Создаем результат, который говорит сам за себя.</p>
+    <h1>DESIGN & ACADEMIC SERVICES</h1>
     <div class="btn-group">
         <a href="https://t.me/APEXSTUDIO1" class="btn btn-dark">Связаться в Telegram</a>
-        <a href="https://vk.com/apexstudio1" class="btn btn-outline">Связаться в VK</a>
+        <a href="https://vk.com/apexstudio1" class="btn btn-outline">Связаться в ВК</a>
     </div>
 </section>
 
 <div class="container">
-    <h2 class="section-title">SERVICES & PRICES</h2>
     <div class="grid">
         
         <div class="category-card">
-            <h2>DESIGN & IDENTITY</h2>
+            <h2>DESIGN & BRANDING</h2>
             
             <div class="service-item">
-                <i data-lucide="layers" class="icon"></i>
+                <i data-lucide="zap" class="icon"></i>
                 <div class="service-info">
-                    <h4>Фирменный стиль <span>от 10 000 ₽</span></h4>
-                    <p>Полная визуальная упаковка вашего бренда под ключ.</p>
+                    <h4>Логотип «START» <span class="price-tag">1 500 ₽</span></h4>
+                    <p>2 варианта, базовые правки. Идеально для малого бизнеса.</p>
                 </div>
             </div>
 
             <div class="service-item">
-                <i data-lucide="palette" class="icon"></i>
+                <i data-lucide="crown" class="icon"></i>
                 <div class="service-info">
-                    <h4>Логотип «APEX» <span>3 500 ₽</span></h4>
-                    <p>3 варианта, проработка смыслов, векторные исходники.</p>
+                    <h4>Логотип «APEX» <span class="price-tag">3 500 ₽</span></h4>
+                    <p>3 варианта, концептуальный подход, векторные форматы.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <i data-lucide="image-plus" class="icon"></i>
+                <div class="service-info">
+                    <h4>Реставрация фото <span class="price-tag">от 1 000 ₽</span></h4>
+                    <p>Восстановление старых снимков, цветокоррекция и устранение дефектов.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <i data-lucide="component" class="icon"></i>
+                <div class="service-info">
+                    <h4>Фирменный стиль <span class="price-tag">от 10 000 ₽</span></h4>
+                    <p>Полное визуальное решение: лого, шрифты, цвета и гайдбук.</p>
                 </div>
             </div>
 
             <div class="service-item">
                 <i data-lucide="layout" class="icon"></i>
                 <div class="service-info">
-                    <h4>Оформление ТГ/ВК <span>2 000 ₽</span></h4>
-                    <p>Аватарка, баннер и обложки для навигации.</p>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <i data-lucide="shopping-bag" class="icon"></i>
-                <div class="service-info">
-                    <h4>Карточка товара <span>200 ₽</span></h4>
-                    <p>Продающая инфографика для маркетплейсов (за 1 шт).</p>
+                    <h4>Оформление ТГ/ВК <span class="price-tag">2 000 ₽</span></h4>
+                    <p>Полная упаковка сообщества: аватар, баннеры, обложки.</p>
                 </div>
             </div>
         </div>
 
         <div class="category-card">
-            <h2>ACADEMIC & SLIDES</h2>
+            <h2>ACADEMIC HELP</h2>
             
             <div class="service-item">
-                <i data-lucide="file-text" class="icon"></i>
+                <i data-lucide="file-check" class="icon"></i>
                 <div class="service-info">
-                    <h4>Курсовая работа <span>3 500 ₽</span></h4>
-                    <p>Теоретическая часть, сопровождение до самой защиты.</p>
+                    <h4>Курсовая работа <span class="price-tag">3 500 ₽</span></h4>
+                    <p>Качественная теория, соблюдение структуры и помощь до сдачи.</p>
                 </div>
             </div>
 
             <div class="service-item">
-                <i data-lucide="book-open" class="icon"></i>
+                <i data-lucide="edit-3" class="icon"></i>
                 <div class="service-info">
-                    <h4>Реферат <span>700 ₽</span></h4>
-                    <p>Оригинальность 70%+, полное оформление по ГОСТу.</p>
+                    <h4>Реферат <span class="price-tag">700 ₽</span></h4>
+                    <p>Уникальность от 70%, оформление по всем стандартам ГОСТ.</p>
                 </div>
             </div>
 
             <div class="service-item">
-                <i data-lucide="presentation" class="icon"></i>
+                <i data-lucide="monitor" class="icon"></i>
                 <div class="service-info">
-                    <h4>Презентация <span>50 ₽ / слайд</span></h4>
-                    <p>Современный дизайн, который выделит вас среди других.</p>
+                    <h4>Презентация <span class="price-tag">50 ₽ / слайд</span></h4>
+                    <p>Визуально приятные слайды, облегчающие восприятие материала.</p>
                 </div>
             </div>
 
             <div class="service-item">
-                <i data-lucide="mic" class="icon"></i>
+                <i data-lucide="message-square" class="icon"></i>
                 <div class="service-info">
-                    <h4>Доклад + речь <span>500 ₽</span></h4>
-                    <p>Готовый текст для выступления: кратко и по делу.</p>
+                    <h4>Доклад + речь <span class="price-tag">500 ₽</span></h4>
+                    <p>Текст выступления, который позволит уверенно защитить работу.</p>
                 </div>
             </div>
         </div>
@@ -198,11 +219,10 @@
 </div>
 
 <footer>
-    &copy; 2026 APEX STUDIO. ALL RIGHTS RESERVED.
+    APEX STUDIO &copy; 2026 | DESIGN BY ROMAN KULAKOV
 </footer>
 
 <script>
-    // Активируем иконки Lucide
     lucide.createIcons();
 </script>
 
