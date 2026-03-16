@@ -3,168 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX STUDIO | Студия дизайна и текстов</title>
+    <title>APEX STUDIO</title>
     <style>
-        /* Подключаем стильные шрифты */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@300;400&display=swap');
 
         :root {
-            --black: #050505;
-            --white: #ffffff;
-            --accent: #ff0000; /* Фирменный красный */
-            --gray: #1a1a1a;
+            --bg: #0a0a0a;
+            --card-bg: #111111;
+            --text: #ffffff;
+            --accent: #ffffff; /* Минимализм: акцент белый или светло-серый */
+            --border: #333333;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            margin: 0;
+            text-align: center;
         }
 
-        /* Шапка */
         header {
             padding: 20px 5%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 5, 0.95);
-            border-bottom: 1px solid var(--gray);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            gap: 15px;
         }
 
-        .logo-box { display: flex; align-items: center; gap: 15px; }
-        .logo-box img { width: 50px; height: 50px; object-fit: contain; }
-        .logo-box span { font-family: 'Orbitron', sans-serif; font-size: 22px; letter-spacing: 2px; }
+        .logo-small { width: 30px; }
+        .studio-name { font-family: 'Orbitron'; font-size: 1.2rem; letter-spacing: 2px; }
 
-        /* Главный экран */
         .hero {
-            height: 80vh;
+            padding: 60px 20px;
+            background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .main-wolf {
+            width: 250px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.05)); /* Еле заметное свечение */
+        }
+
+        h1 {
+            font-family: 'Orbitron';
+            font-size: clamp(24px, 6vw, 50px);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        /* КНОПКИ В СТИЛЕ МИНИМАЛИЗМ */
+        .btn-container {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #200000 0%, #050505 70%);
-            padding: 20px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(32px, 8vw, 70px);
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span { color: var(--accent); }
-
-        .hero p {
-            color: #aaa;
-            font-size: 18px;
-            max-width: 700px;
-            margin-bottom: 35px;
-        }
-
-        /* Кнопки */
-        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
         .btn {
-            padding: 16px 35px;
+            padding: 12px 30px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
             text-decoration: none;
+            font-family: 'Montserrat';
+            font-size: 13px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+
+        /* ТАБЛИЦА ПРАЙСА */
+        .price-section {
+            padding: 80px 5%;
+        }
+
+        .price-title {
+            font-family: 'Orbitron';
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+        }
+
+        .price-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            border: 1px solid var(--border);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .price-col {
+            padding: 30px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .price-col h3 {
+            font-family: 'Orbitron';
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: #888;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
             font-size: 14px;
         }
 
-        .btn-primary { background: var(--accent); color: white; border: 1px solid var(--accent); }
-        .btn-secondary { background: transparent; color: white; border: 1px solid white; }
+        .price-item span { color: #555; font-size: 12px; }
 
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3); }
-
-        /* Сетка услуг */
-        .services {
-            padding: 80px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--gray);
-            padding: 40px;
-            border: 1px solid #222;
-            transition: 0.3s;
-        }
-
-        .card:hover { border-color: var(--accent); background: #111; }
-
-        .card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent);
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid var(--gray);
-            color: #444;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* Мобильная адаптация */
         @media (max-width: 600px) {
-            .logo-box span { font-size: 18px; }
-            .hero h1 { font-size: 30px; }
+            .btn { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-box">
-            <img src="logo.png" alt="APEX">
-            <span>APEX STUDIO</span>
-        </div>
+        <img src="logo.png" class="logo-small" alt="Apex">
+        <div class="studio-name">APEX STUDIO</div>
     </header>
 
     <section class="hero">
-        <h1>APEX <span>LEVEL</span></h1>
-        <p>Профессиональный дизайн и академическая помощь. Мы делаем то, что другие считают невозможным.</p>
-        
-        <div class="cta-group">
-            <a href="https://t.me/APEXSTUDIO1" class="btn btn-primary">Написать в Telegram</a>
-            <a href="https://vk.com/apexstudio1" class="btn btn-secondary">Группа VK</a>
+        <img src="logo.png" class="main-wolf" alt="Apex Wolf">
+        <h1>APEX CREATIVE LEVEL</h1>
+        <p class="subtitle">Профессиональный дизайн и академическая помощь.<br>Мы создаем ваш успех.</p>
+
+        <div class="btn-container">
+            <a href="https://t.me/APEXSTUDIO1" class="btn">Связаться в Telegram</a>
+            <a href="https://vk.com/apexstudio1" class="btn">Связаться в VK</a>
         </div>
     </section>
 
-    <section class="services">
-        <div class="card">
-            <h3>LOGOS & BRANDING</h3>
-            <p>Создаем агрессивный и запоминающийся визуальный стиль. Твой логотип — твоё оружие.</p>
-        </div>
-        <div class="card">
-            <h3>ACADEMIC HELP</h3>
-            <p>Рефераты, презентации и курсовые. Без плагиата, без воды, точно в дедлайн.</p>
-        </div>
-        <div class="card">
-            <h3>SOCIAL DESIGN</h3>
-            <p>Оформление сообществ ВК и каналов ТГ. Выделяйся среди конкурентов.</p>
+    <section class="price-section">
+        <div class="price-title">PRICE LIST</div>
+        <div class="price-table">
+            <div class="price-col">
+                <h3>ГРАФИЧЕСКИЙ ДИЗАЙН</h3>
+                <div class="price-item">Фирменный стиль <b>от 10 000 ₽</b></div>
+                <div class="price-item">Оформление ТГ/ВК <b>3 000 ₽</b></div>
+                <div class="price-item">Карточка товара <b>200 ₽</b></div>
+                <div class="price-item">Логотип <span>по запросу</span></div>
+            </div>
+            <div class="price-col">
+                <h3>EDUCATION СЕКТОР</h3>
+                <div class="price-item">Курсовая работа <b>от 4 000 ₽</b></div>
+                <div class="price-item">Реферат <b>500 ₽</b></div>
+                <div class="price-item">Презентация <b>50 ₽ / слайд</b></div>
+            </div>
         </div>
     </section>
-
-    <footer>
-        &copy; 2026 APEX STUDIO. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
-    </footer>
 
 </body>
 </html>
