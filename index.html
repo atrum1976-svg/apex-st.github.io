@@ -3,94 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX STUDIO | Кулаков Роман</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>APEX STUDIO | Дизайн и Академическая помощь</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --bg-start: #ffffff;
-            --bg-end: #f4f7f6;
-            --text-main: #000000;
-            --text-secondary: #555555;
-            --accent: #1a1a1a;
-            --border: #e0e0e0;
-            --price-color: #000000; /* Цены теперь ЧЕРНЫЕ */
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-            color: var(--text-main); 
-            font-family: 'Inter', sans-serif; 
+        /* Базовые стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #000;
+            background-color: #fff;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* УСИЛЕННЫЕ АБСТРАКЦИИ - ЧЕТКИЕ ТРЕУГОЛЬНИКИ */
-        .bg-shape {
-            position: absolute;
-            background: rgba(0,0,0,0.06); /* Сделал ярче */
+        /* Контейнер для частиц */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
             z-index: -1;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Это делает треугольник */
+            background-color: #ffffff;
         }
-        .shape-1 { width: 350px; height: 350px; top: 10%; left: -150px; transform: rotate(45deg); opacity: 0.8; }
-        .shape-2 { width: 250px; height: 250px; bottom: 20%; right: -100px; transform: rotate(-15deg); opacity: 0.6; }
-        .shape-3 { width: 180px; height: 180px; top: 55%; left: 40%; transform: rotate(120deg); opacity: 0.4; }
 
         header {
-            padding: 15px 5%;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
-        .logo-box img { width: 30px; }
-        .logo-box span { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 1px; }
 
-        .profile-trigger {
-            cursor: pointer;
-            background: var(--accent);
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
+        .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            gap: 15px;
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            margin-left: 20px;
+            font-weight: 500;
             transition: 0.3s;
         }
-        .profile-trigger:hover { background: #333; transform: translateY(-2px); }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 3000;
-            backdrop-filter: blur(10px);
-        }
-        .modal-card {
-            background: #fff;
-            padding: 40px;
-            border: 1px solid #000;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-        .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #888; }
-        .modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid #eee; }
+        .nav-links a:hover { opacity: 0.6; }
 
+        /* Секция Hero */
         .hero {
             height: 80vh;
             display: flex;
@@ -98,143 +71,193 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 0 20px;
         }
-        .main-wolf { width: 200px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
-        h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 55px); letter-spacing: 5px; margin-bottom: 10px; }
-        .subtitle { color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; font-size: 11px; margin-bottom: 40px; font-weight: 300; }
 
-        .btn-group { display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
-        .btn { 
-            padding: 16px 40px; 
-            text-decoration: none; 
-            border: 2px solid #000; 
-            font-size: 14px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: #000; 
-            transition: 0.3s; 
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            color: #555;
+        }
+
+        /* Секция До/После */
+        .comparison-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .foreground-img {
+            width: 50%;
+            border-right: 3px solid #fff;
+            z-index: 2;
+        }
+
+        .slider {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            z-index: 10;
+            cursor: ew-resize;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 4px;
+            height: 500px;
+            background: #fff;
+        }
+
+        /* Кнопки */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            margin-top: 100px;
+        }
+
+        .social-icons {
+            font-size: 24px;
             display: flex;
-            align-items: center;
-            gap: 15px;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
         }
-        .btn:hover { background: #000; color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; position: relative;}
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 60px; }
-        
-        .category-card { background: rgba(255,255,255,0.7); padding: 40px; border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.02);}
-        .category-card h2 { font-family: 'Orbitron'; font-size: 0.9rem; margin-bottom: 45px; letter-spacing: 3px; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .social-icons a { color: #000; transition: 0.3s; }
+        .social-icons a:hover { transform: scale(1.2); }
 
-        .service-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
-        .service-info h4 { font-size: 14px; font-weight: 700; }
-        .service-info p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; max-width: 250px; }
-        .price { font-weight: 700; font-size: 14px; color: var(--price-color); } /* Стали черными */
-
-        footer { text-align: center; padding: 60px; font-family: 'Orbitron'; font-size: 10px; color: #bbb; letter-spacing: 1px; }
-
-        @media (max-width: 600px) { .btn { width: 100%; justify-content: center; } }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .comparison-container { height: 300px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
+    <div id="particles-js"></div>
 
     <header>
-        <a href="#" class="logo-box">
-            <img src="logo.png" alt="Logo">
+        <div class="logo">
+            <img src="logo.png" alt="APEX">
             <span>APEX STUDIO</span>
-        </a>
-        <div class="profile-trigger" onclick="toggleModal()">
-            <i data-lucide="user" size="16"></i>
-            <span>Основатель</span>
         </div>
+        <nav class="nav-links">
+            <a href="#portfolio">Кейсы</a>
+            <a href="https://t.me/APEXSTUDIO1">Контакт</a>
+        </nav>
     </header>
 
-    <div class="modal-overlay" id="modal">
-        <div class="modal-card">
-            <i data-lucide="x" class="close-modal" onclick="toggleModal()"></i>
-            <img src="me.jpg" alt="Кулаков Роман" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
-            <h3>Кулаков Роман Александрович</h3>
-            <p style="font-size: 13px; color: #666; margin-top: 5px;">Главный дизайнер / Основатель</p>
-            <p style="font-size: 12px; color: #999; margin-top: 5px;">г. Красноярск</p>
-            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
-                <p style="font-size: 13px;">Почта:</p>
-                <a href="mailto:atrum1976@gmail.com" style="color: #000; font-weight: 700; text-decoration: none;">atrum1976@gmail.com</a>
-            </div>
-        </div>
-    </div>
-
     <section class="hero">
-        <img src="logo.png" alt="Apex Wolf" class="main-wolf">
-        <h1>APEX LEVEL</h1>
-        <p class="subtitle">Креативный дизайн & Академическая поддержка</p>
-        <div class="btn-group">
-            <a href="https://t.me/APEXSTUDIO1" target="_blank" class="btn"><i data-lucide="send" size="24"></i> Telegram</a>
-            <a href="https://vk.com/apexstudio1" target="_blank" class="btn"><i data-lucide="message-circle" size="24"></i> Vkontakte</a>
+        <h1>Level Up Your Project</h1>
+        <p>Профессиональный дизайн и экспертная помощь в обучении. Мы создаем вершину качества для ваших задач.</p>
+        <a href="https://t.me/APEXSTUDIO1" class="cta-button">Начать проект</a>
+    </section>
+
+    <section id="portfolio" class="comparison-section">
+        <h2>Реставрация и Ретушь</h2>
+        <p>Двигайте ползунок, чтобы увидеть результат нашей работы</p>
+        
+        <div class="comparison-container">
+            <div class="img background-img" style="background-image: url('photo-after.jpg');"></div>
+            <div class="img foreground-img" style="background-image: url('photo-before.jpg');"></div>
+            <input type="range" min="1" max="100" value="50" class="slider" id="compare-slider">
         </div>
     </section>
 
-    <div class="container">
-        <div class="grid">
-            <div class="category-card">
-                <h2>УСЛУГИ ДИЗАЙНА</h2>
-                <div class="service-item">
-                    <div class="service-info"><h4>Фирменный стиль</h4><p>Полная визуальная упаковка бренда под ключ</p></div>
-                    <div class="price">от 10 000 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Логотип «APEX»</h4><p>3 варианты, глубокая концептуальная проработка</p></div>
-                    <div class="price">3 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Логотип «START»</h4><p>2 варианты, базовая графика</p></div>
-                    <div class="price">1 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Реставрация фото</h4><p>Восстановление старых снимков и ретушь</p></div>
-                    <div class="price">от 1 000 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Оформление соцсетей</h4><p>Полная упаковка ТГ / ВК / Инстаграм</p></div>
-                    <div class="price">2 000 ₽</div>
-                </div>
-            </div>
-
-            <div class="category-card">
-                <h2>АКАДЕМИЧЕСКАЯ ПОМОЩЬ</h2>
-                <div class="service-item">
-                    <div class="service-info"><h4>Курсовая работа</h4><p>Качественная теория, соблюдение структуры</p></div>
-                    <div class="price">3 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Реферат</h4><p>Уникальность от 70%, по ГОСТу</p></div>
-                    <div class="price">700 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Презентация</h4><p>Современный дизайн слайдов для защиты</p></div>
-                    <div class="price">50 ₽ / сл.</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Доклад + речь</h4><p>Готовый текст выступления, кратко и по делу</p></div>
-                    <div class="price">500 ₽</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer>
-        APEX STUDIO &copy; 2026 | DESIGNED BY ROMAN KULAKOV
+        <p>&copy; 2026 APEX STUDIO. Кулаков Роман.</p>
+        <div class="social-icons">
+            <a href="https://t.me/APEXSTUDIO1"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/apex_st"><i class="fab fa-vk"></i></a>
+        </div>
+        <p style="margin-top: 15px; font-size: 14px; opacity: 0.5;">apex-st.ru</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        lucide.createIcons();
-        function toggleModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
-        }
+        /* Инициализация частиц */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#000000" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#000000", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.5 } }
+                }
+            },
+            "retina_detect": true
+        });
+
+        /* Логика ползунка До/После */
+        const slider = document.getElementById('compare-slider');
+        const foregroundImg = document.querySelector('.foreground-img');
+
+        slider.addEventListener('input', (e) => {
+            const sliderValue = e.target.value;
+            foregroundImg.style.width = `${sliderValue}%`;
+        });
     </script>
 </body>
 </html>
