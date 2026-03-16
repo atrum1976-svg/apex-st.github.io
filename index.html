@@ -35,6 +35,8 @@
             --price-color: #000000; 
         }
 
+        html { scroll-behavior: smooth; } /* Плавный переход к рефератам */
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
@@ -79,12 +81,15 @@
         .logo-box img { width: 30px; }
         .logo-box span { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 1px; }
 
+        .header-controls { display: flex; gap: 10px; }
+
         .profile-trigger {
             cursor: pointer; background: var(--accent); color: #fff;
             padding: 8px 18px; border-radius: 20px;
             display: flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 1px; transition: 0.3s;
+            text-decoration: none;
         }
         .profile-trigger:hover { background: #333; transform: translateY(-2px); }
 
@@ -109,7 +114,6 @@
         }
         .main-wolf { width: 200px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
         
-        /* SEO Оптимизированные заголовки */
         h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 55px); letter-spacing: 5px; margin-bottom: 10px; }
         .hero-seo-text { font-family: 'Orbitron'; font-size: 14px; color: #000; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; max-width: 600px; line-height: 1.6; }
         .subtitle { color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; font-size: 11px; margin-bottom: 40px; font-weight: 300; }
@@ -133,9 +137,29 @@
         .service-info p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; max-width: 250px; }
         .price { font-weight: 700; font-size: 14px; color: var(--price-color); }
 
+        /* СЕКЦИЯ РЕФЕРАТОВ */
+        .referat-section { margin-top: 60px; }
+        .search-box { position: relative; max-width: 500px; margin: 0 auto 40px; }
+        .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
+        .search-box input { 
+            width: 100%; padding: 15px 15px 15px 45px; border: 1px solid #000; 
+            font-family: 'Inter'; outline: none; font-size: 14px;
+        }
+        .referat-list { display: grid; gap: 15px; }
+        .referat-card { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px; background: #fff; border: 1px solid #eee; transition: 0.3s;
+        }
+        .referat-card:hover { border-color: #000; transform: translateX(5px); }
+        .download-btn { font-family: 'Orbitron'; font-size: 11px; color: #000; text-decoration: none; border-bottom: 1px solid #000; }
+
         footer { text-align: center; padding: 60px; font-family: 'Orbitron'; font-size: 10px; color: #bbb; letter-spacing: 1px; line-height: 2; }
 
-        @media (max-width: 600px) { .btn { width: 100%; justify-content: center; } }
+        @media (max-width: 600px) { 
+            .btn { width: 100%; justify-content: center; } 
+            .header-controls span { display: none; } /* Скрываем текст на мобилках для компактности */
+            .referat-card { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -149,9 +173,15 @@
             <img src="logo.png" alt="APEX STUDIO Logo">
             <span>APEX STUDIO</span>
         </a>
-        <div class="profile-trigger" onclick="toggleModal()">
-            <i data-lucide="user" size="16"></i>
-            <span>Основатель</span>
+        <div class="header-controls">
+            <a href="#referats" class="profile-trigger">
+                <i data-lucide="book-open" size="16"></i>
+                <span>Рефераты</span>
+            </a>
+            <div class="profile-trigger" onclick="toggleModal()">
+                <i data-lucide="user" size="16"></i>
+                <span>Основатель</span>
+            </div>
         </div>
     </header>
 
@@ -222,6 +252,33 @@
                 </div>
             </div>
         </div>
+
+        <section class="referat-section" id="referats">
+            <h2 style="font-family: 'Orbitron'; text-align: center; margin-bottom: 40px; letter-spacing: 3px;">БАЗА РЕФЕРАТОВ</h2>
+            
+            <div class="search-box">
+                <i data-lucide="search" size="18"></i>
+                <input type="text" id="searchInput" placeholder="Поиск темы реферата...">
+            </div>
+
+            <div class="referat-list" id="referatList">
+                <div class="referat-card">
+                    <div>
+                        <h4 class="ref-name">История Красноярска: от острога до мегаполиса</h4>
+                        <p style="font-size: 11px; color: #888; margin-top: 5px;">DOCX • 15 стр • ГОСТ 2026</p>
+                    </div>
+                    <a href="files/history_krsk.docx" class="download-btn" download>СКАЧАТЬ</a>
+                </div>
+
+                <div class="referat-card">
+                    <div>
+                        <h4 class="ref-name">Тренды в дизайне логотипов 2026 года</h4>
+                        <p style="font-size: 11px; color: #888; margin-top: 5px;">PDF • 10 стр • С примерами</p>
+                    </div>
+                    <a href="files/logo_trends_2026.pdf" class="download-btn" download>СКАЧАТЬ</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer>
@@ -231,10 +288,22 @@
 
     <script>
         lucide.createIcons();
+        
         function toggleModal() {
             const modal = document.getElementById('modal');
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
+
+        // Поиск по списку
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.referat-card');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.ref-name').innerText.toLowerCase();
+                item.style.display = title.includes(term) ? 'flex' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
