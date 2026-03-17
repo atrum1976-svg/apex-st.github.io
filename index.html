@@ -108,7 +108,6 @@
         .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #888; }
         .modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid #eee; }
 
-        /* СТИЛИ КОНВЕРТЕРА */
         #dropZone {
             border: 2px dashed #ccc;
             padding: 30px;
@@ -205,7 +204,7 @@
         <div class="modal-card">
             <i data-lucide="x" class="close-modal" onclick="toggleConverter()"></i>
             <h3 style="font-family: 'Orbitron';">APEX CONVERTER</h3>
-            <p style="font-size: 12px; color: #666; margin-top: 5px;">Преобразование PDF в DOCX (текст)</p>
+            <p style="font-size: 12px; color: #666; margin-top: 5px;">Преобразование PDF в DOC (текст)</p>
             
             <div id="dropZone" onclick="document.getElementById('pdfInput').click()">
                 <i data-lucide="file-up" size="32" style="color: #ccc; margin-bottom: 10px;"></i>
@@ -219,7 +218,7 @@
     <div class="modal-overlay" id="modal">
         <div class="modal-card">
             <i data-lucide="x" class="close-modal" onclick="toggleModal()"></i>
-            <img src="me.jpg" alt="Кулаков Роман - Основатель APEX STUDIO" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
+            <img src="me.jpg" alt="Основатель" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
             <h3>Кулаков Роман Александрович</h3>
             <p style="font-size: 13px; color: #666; margin-top: 5px;">Главный дизайнер / Основатель</p>
             <p style="font-size: 12px; color: #999; margin-top: 5px;">г. Красноярск</p>
@@ -286,12 +285,10 @@
 
         <section class="referat-section" id="referats">
             <h2 style="font-family: 'Orbitron'; text-align: center; margin-bottom: 40px; letter-spacing: 3px;">БАЗА РЕФЕРАТОВ</h2>
-            
             <div class="search-box">
                 <i data-lucide="search" size="18"></i>
                 <input type="text" id="searchInput" placeholder="Поиск темы реферата...">
             </div>
-
             <div class="referat-list" id="referatList">
                 <div class="referat-card">
                     <div>
@@ -300,7 +297,6 @@
                     </div>
                     <a href="files/Реферат Внутриличностный конфликт.docx" class="download-btn" download>СКАЧАТЬ</a>
                 </div>
-
                 <div class="referat-card">
                     <div>
                         <h4 class="ref-name">Реформы государственного управления Екатерины II</h4>
@@ -330,7 +326,6 @@
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // ЛОГИКА КОНВЕРТАЦИИ
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
         async function processPDF(file) {
@@ -339,7 +334,7 @@
             const status = document.getElementById('statusText');
             
             loader.style.display = 'block';
-            status.innerText = "Обработка: " + file.name;
+            status.innerText = "Чтение документа...";
 
             try {
                 const arrayBuffer = await file.arrayBuffer();
@@ -349,29 +344,43 @@
                 for (let i = 1; i <= pdf.numPages; i++) {
                     const page = await pdf.getPage(i);
                     const text = await page.getTextContent();
-                    textContent += text.items.map(s => s.str).join(' ') + "\n\n";
+                    // Склеиваем текст страницы
+                    textContent += text.items.map(s => s.str).join(' ') + "<br><br>";
                 }
 
-                const blob = new Blob([textContent], { type: 'application/msword' });
+                status.innerText = "Создание файла...";
+
+                // Формируем HTML структуру для Word с поддержкой UTF-8
+                const htmlHeader = `
+                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                    <head><meta charset='utf-8'><style>
+                        body { font-family: 'Times New Roman', serif; font-size: 14pt; line-height: 1.5; }
+                    </style></head><body>`;
+                const htmlFooter = "</body></html>";
+                const fullHtml = htmlHeader + textContent + htmlFooter;
+
+                // Используем BOM (\ufeff) для корректного отображения кириллицы в Word
+                const blob = new Blob(['\ufeff', fullHtml], { type: 'application/msword' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
                 a.download = file.name.replace(".pdf", ".doc");
+                document.body.appendChild(a);
                 a.click();
+                document.body.removeChild(a);
                 
-                status.innerText = "Готово! Файл скачан.";
+                status.innerText = "Готово! Проверьте загрузки.";
             } catch (e) {
-                status.innerText = "Ошибка при конвертации.";
+                console.error(e);
+                status.innerText = "Ошибка конвертации.";
             } finally {
                 loader.style.display = 'none';
             }
         }
 
-        // Поиск по списку
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const term = e.target.value.toLowerCase();
             const items = document.querySelectorAll('.referat-card');
-            
             items.forEach(item => {
                 const title = item.querySelector('.ref-name').innerText.toLowerCase();
                 item.style.display = title.includes(term) ? 'flex' : 'none';
