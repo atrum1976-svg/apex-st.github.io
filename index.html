@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>APEX STUDIO | Заказать презентацию, реферат и дизайн в Красноярске</title>
-    <meta name="description" content="Профессиональное написание рефератов, курсовых и создание презентаций в Красноярске. Дизайн логотипов и фирменного стиля от APEX STUDIO. Качественно и быстро.">
-    <meta name="keywords" content="заказать презентацию Красноярск, написание рефератов, дизайн логотипа цена, помощь студентам СФУ, реставрация фото">
+    <title>APEX STUDIO | Дизайн логотипов и реставрация фото в Красноярске</title>
+    <meta name="description" content="Профессиональный графический дизайн в Красноярске. Разработка логотипов, визиток и качественная реставрация старых фотографий от APEX STUDIO.">
+    <meta name="keywords" content="дизайн логотипа Красноярск, заказать визитки, реставрация фото цена, графический дизайн Крск, восстановление снимков">
 
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -15,16 +15,11 @@
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107717559', 'ym');
-
-        ym(107717559, 'init', {
-            ssr:true, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, ecommerce:"dataLayer"
-        });
+        ym(107717559, 'init', { ssr:true, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, ecommerce:"dataLayer" });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/107717559" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 
     <style>
         :root {
@@ -34,206 +29,140 @@
             --text-secondary: #555555;
             --accent: #1a1a1a;
             --border: #e0e0e0;
-            --price-color: #000000; 
         }
 
         html { scroll-behavior: smooth; }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
             color: var(--text-main); 
             font-family: 'Inter', sans-serif; 
             overflow-x: hidden;
-            position: relative;
             min-height: 100vh;
         }
 
+        /* Декор фона */
         .bg-shape {
-            position: fixed;
-            background: rgba(0,0,0,0.06);
-            z-index: -1;
+            position: fixed; background: rgba(0,0,0,0.04); z-index: -1;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             animation: float 20s infinite linear;
         }
-
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, 50px) rotate(10deg); }
-            66% { transform: translate(-20px, 80px) rotate(-10deg); }
+            50% { transform: translate(30px, 50px) rotate(10deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
-
-        .shape-1 { width: 350px; height: 350px; top: 10%; left: -100px; opacity: 0.8; animation-duration: 25s; }
-        .shape-2 { width: 250px; height: 250px; bottom: 20%; right: -50px; opacity: 0.6; animation-duration: 18s; animation-direction: reverse;}
-        .shape-3 { width: 180px; height: 180px; top: 55%; left: 40%; opacity: 0.4; animation-duration: 22s; }
+        .shape-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
+        .shape-2 { width: 300px; height: 300px; bottom: -50px; right: -50px; }
 
         header {
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
+            padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
-        .logo-box img { width: 30px; }
-        .logo-box span { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 1px; }
-
-        .header-controls { display: flex; gap: 10px; }
+        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+        .logo-box img { width: 35px; }
+        .logo-box span { font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 2px; }
 
         .profile-trigger {
             cursor: pointer; background: var(--accent); color: #fff;
-            padding: 8px 18px; border-radius: 20px;
+            padding: 10px 20px; border-radius: 30px;
             display: flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 1px; transition: 0.3s;
-            text-decoration: none;
-        }
-        .profile-trigger:hover { background: #333; transform: translateY(-2px); }
-
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.9); display: none;
-            justify-content: center; align-items: center;
-            z-index: 3000; backdrop-filter: blur(10px);
-        }
-        .modal-card {
-            background: #fff; padding: 40px; border: 1px solid #000;
-            text-align: center; max-width: 400px; width: 90%;
-            position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-        .close-modal { position: absolute; top: 15px; right: 15px; cursor: pointer; color: #888; }
-        .modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid #eee; }
-
-        #dropZone {
-            border: 2px dashed #ccc;
-            padding: 30px;
-            margin: 20px 0;
-            cursor: pointer;
             transition: 0.3s;
         }
-        #dropZone:hover { border-color: #000; background: #f9f9f9; }
-        .loader { display: none; margin-top: 15px; font-size: 12px; color: #888; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        .profile-trigger:hover { background: #444; transform: translateY(-2px); }
 
+        /* Геройская секция */
         .hero {
-            height: 80vh; display: flex; flex-direction: column;
+            height: 70vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             text-align: center; padding: 20px;
         }
-        .main-wolf { width: 200px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
-        
-        h1 { font-family: 'Orbitron'; font-size: clamp(30px, 8vw, 55px); letter-spacing: 5px; margin-bottom: 10px; }
-        .hero-seo-text { font-family: 'Orbitron'; font-size: 14px; color: #000; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; max-width: 600px; line-height: 1.6; }
-        .subtitle { color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; font-size: 11px; margin-bottom: 40px; font-weight: 300; }
+        .main-wolf { width: 180px; margin-bottom: 25px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+        h1 { font-family: 'Orbitron'; font-size: clamp(32px, 8vw, 60px); letter-spacing: 6px; margin-bottom: 15px; }
+        .hero-seo-text { font-family: 'Orbitron'; font-size: 14px; color: #333; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; max-width: 700px; line-height: 1.6; }
 
-        .btn-group { display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .btn { 
-            padding: 16px 40px; text-decoration: none; border: 2px solid #000; 
+            padding: 18px 45px; text-decoration: none; border: 2px solid #000; 
             font-size: 14px; font-weight: 800; text-transform: uppercase; 
-            color: #000; transition: 0.3s; display: flex; align-items: center; gap: 15px;
+            color: #000; transition: 0.3s; display: flex; align-items: center; gap: 12px;
         }
-        .btn:hover { background: #000; color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn:hover { background: #000; color: #fff; transform: translateY(-3px); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; position: relative;}
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 60px; }
+        /* Контент */
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         
-        .category-card { background: rgba(255,255,255,0.7); padding: 40px; border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.02);}
-        .category-card h2 { font-family: 'Orbitron'; font-size: 0.9rem; margin-bottom: 45px; letter-spacing: 3px; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .category-card { background: #fff; padding: 45px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .category-card h2 { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 40px; letter-spacing: 3px; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 20px; }
 
-        .service-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
-        .service-info h4 { font-size: 14px; font-weight: 700; }
-        .service-info p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; max-width: 250px; }
-        .price { font-weight: 700; font-size: 14px; color: var(--price-color); }
+        .service-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f9f9f9; }
+        .service-info h4 { font-size: 15px; font-weight: 700; }
+        .service-info p { font-size: 13px; color: var(--text-secondary); margin-top: 5px; max-width: 240px; }
+        .price { font-weight: 700; font-size: 15px; white-space: nowrap; }
 
-        .referat-section { margin-top: 60px; padding-top: 60px; border-top: 1px solid #000; }
-        .search-box { position: relative; max-width: 500px; margin: 0 auto 40px; }
-        .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
-        .search-box input { 
-            width: 100%; padding: 15px 15px 15px 45px; border: 1px solid #000; 
-            font-family: 'Inter'; outline: none; font-size: 14px;
+        /* Модалка */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95); display: none;
+            justify-content: center; align-items: center;
+            z-index: 2000; backdrop-filter: blur(10px);
         }
-        .referat-list { display: grid; gap: 15px; }
-        .referat-card { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px; background: #fff; border: 1px solid #eee; transition: 0.3s;
+        .modal-card {
+            background: #fff; padding: 50px; border: 1px solid #000;
+            text-align: center; max-width: 450px; width: 90%;
+            position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
-        .referat-card:hover { border-color: #000; transform: translateX(5px); }
-        .download-btn { font-family: 'Orbitron'; font-size: 11px; color: #000; text-decoration: none; border-bottom: 1px solid #000; }
+        .close-modal { position: absolute; top: 20px; right: 20px; cursor: pointer; color: #000; }
+        .modal-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 2px solid #000; }
 
-        footer { text-align: center; padding: 60px; font-family: 'Orbitron'; font-size: 10px; color: #bbb; letter-spacing: 1px; line-height: 2; }
+        footer { text-align: center; padding: 80px 20px; font-family: 'Orbitron'; font-size: 11px; color: #999; letter-spacing: 1px; line-height: 2; border-top: 1px solid #eee; margin-top: 50px; }
 
-        @media (max-width: 600px) { 
-            .btn { width: 100%; justify-content: center; } 
-            .header-controls span { display: none; }
-            .referat-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-        }
+        @media (max-width: 600px) { h1 { font-size: 32px; } .btn { width: 100%; justify-content: center; } }
     </style>
 </head>
 <body>
 
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
 
     <header>
         <a href="#" class="logo-box">
-            <img src="logo.png" alt="APEX STUDIO Logo">
+            <img src="logo.png" alt="APEX STUDIO">
             <span>APEX STUDIO</span>
         </a>
         <div class="header-controls">
-            <div class="profile-trigger" onclick="toggleConverter()">
-                <i data-lucide="refresh-cw" size="16"></i>
-                <span>Конвертер</span>
-            </div>
-            <a href="#referats" class="profile-trigger">
-                <i data-lucide="book-open" size="16"></i>
-                <span>Рефераты</span>
-            </a>
             <div class="profile-trigger" onclick="toggleModal()">
-                <i data-lucide="user" size="16"></i>
+                <i data-lucide="user" size="18"></i>
                 <span>Основатель</span>
             </div>
         </div>
     </header>
 
-    <div class="modal-overlay" id="converterModal">
-        <div class="modal-card">
-            <i data-lucide="x" class="close-modal" onclick="toggleConverter()"></i>
-            <h3 style="font-family: 'Orbitron';">APEX CONVERTER</h3>
-            <p style="font-size: 12px; color: #666; margin-top: 5px;">Преобразование PDF в DOC (текст)</p>
-            
-            <div id="dropZone" onclick="document.getElementById('pdfInput').click()">
-                <i data-lucide="file-up" size="32" style="color: #ccc; margin-bottom: 10px;"></i>
-                <p id="statusText" style="font-size: 13px;">Нажмите или перетащите PDF</p>
-                <input type="file" id="pdfInput" accept=".pdf" style="display: none;" onchange="processPDF(this.files[0])">
-            </div>
-            <div id="convLoader" class="loader">Идет обработка документа...</div>
-        </div>
-    </div>
-
     <div class="modal-overlay" id="modal">
         <div class="modal-card">
             <i data-lucide="x" class="close-modal" onclick="toggleModal()"></i>
-            <img src="me.jpg" alt="Основатель" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
-            <h3>Кулаков Роман Александрович</h3>
-            <p style="font-size: 13px; color: #666; margin-top: 5px;">Главный дизайнер / Основатель</p>
+            <img src="me.jpg" alt="Роман Кулаков" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
+            <h3>Кулаков Роман</h3>
+            <p style="font-size: 14px; color: #666; margin-top: 8px;">Графический дизайнер / Основатель APEX</p>
             <p style="font-size: 12px; color: #999; margin-top: 5px;">г. Красноярск</p>
-            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
-                <p style="font-size: 13px;">Почта:</p>
-                <a href="mailto:atrum1976@gmail.com" style="color: #000; font-weight: 700; text-decoration: none;">atrum1976@gmail.com</a>
+            <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid #eee;">
+                <p style="font-size: 13px; margin-bottom: 5px;">Связь напрямую:</p>
+                <a href="mailto:atrum1976@gmail.com" style="color: #000; font-weight: 700; text-decoration: none; font-size: 15px;">atrum1976@gmail.com</a>
             </div>
         </div>
     </div>
 
     <section class="hero">
-        <img src="logo.png" alt="Apex Wolf Design" class="main-wolf">
+        <img src="logo.png" alt="Apex Wolf" class="main-wolf">
         <h1>APEX STUDIO</h1>
-        <h2 class="hero-seo-text">Заказать презентацию, курсовую работу или дизайн логотипа в Красноярске</h2>
-        <p class="subtitle">Креативные решения и профессиональная академическая поддержка</p>
+        <h2 class="hero-seo-text">Профессиональный дизайн логотипов и реставрация фотографий в Красноярске</h2>
         <div class="btn-group">
             <a href="https://t.me/APEXSTUDIO1" target="_blank" class="btn"><i data-lucide="send" size="24"></i> Telegram</a>
             <a href="https://vk.com/apexstudio1" target="_blank" class="btn"><i data-lucide="message-circle" size="24"></i> Vkontakte</a>
@@ -243,74 +172,50 @@
     <div class="container">
         <div class="grid">
             <div class="category-card">
-                <h2>ДИЗАЙН И ЛОГОТИПЫ</h2>
+                <h2>GRAPHIC DESIGN</h2>
                 <div class="service-item">
-                    <div class="service-info"><h4>Разработка логотипа</h4><p>Создание уникального стиля для вашего бизнеса</p></div>
+                    <div class="service-info"><h4>Логотип</h4><p>Уникальный знак для вашего бренда с нуля</p></div>
                     <div class="price">от 1 500 ₽</div>
                 </div>
                 <div class="service-item">
-                    <div class="service-info"><h4>Фирменный стиль</h4><p>Полная визуальная упаковка бренда под ключ</p></div>
-                    <div class="price">от 10 000 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Реставрация фото</h4><p>Восстановление и ретушь старых фотографий</p></div>
+                    <div class="service-info"><h4>Визитки</h4><p>Дизайн стильных двухсторонних визиток</p></div>
                     <div class="price">от 1 000 ₽</div>
                 </div>
                 <div class="service-item">
-                    <div class="service-info"><h4>Оформление соцсетей</h4><p>Дизайн для сообществ VK и Telegram-каналов</p></div>
+                    <div class="service-info"><h4>Фирменный стиль</h4><p>Полный гайдбук: шрифты, цвета, формы</p></div>
+                    <div class="price">от 10 000 ₽</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info"><h4>Соцсети</h4><p>Оформление обложек и постов для VK/TG</p></div>
                     <div class="price">2 000 ₽</div>
                 </div>
             </div>
 
             <div class="category-card">
-                <h2>РЕФЕРАТЫ И ПРЕЗЕНТАЦИИ</h2>
+                <h2>PHOTO WORK</h2>
                 <div class="service-item">
-                    <div class="service-info"><h4>Заказать презентацию</h4><p>Современные слайды для защиты диплома или проекта</p></div>
+                    <div class="service-info"><h4>Реставрация</h4><p>Удаление трещин, пятен и заломов со старых фото</p></div>
+                    <div class="price">от 1 000 ₽</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info"><h4>Колоризация</h4><p>Профессиональное раскрашивание ч/б снимков</p></div>
+                    <div class="price">от 1 500 ₽</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info"><h4>Ретушь</h4><p>Обработка портретов и замена фона</p></div>
+                    <div class="price">от 500 ₽</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info"><h4>Презентации</h4><p>Стильная визуализация ваших проектов и идей</p></div>
                     <div class="price">50 ₽ / сл.</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Написание реферата</h4><p>Высокая уникальность и соблюдение ГОСТа</p></div>
-                    <div class="price">от 700 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Курсовая работа</h4><p>Помощь с написанием теоретической и практической части</p></div>
-                    <div class="price">от 3 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Доклад и речь</h4><p>Подготовка текста для публичного выступления</p></div>
-                    <div class="price">500 ₽</div>
                 </div>
             </div>
         </div>
-
-        <section class="referat-section" id="referats">
-            <h2 style="font-family: 'Orbitron'; text-align: center; margin-bottom: 40px; letter-spacing: 3px;">БАЗА РЕФЕРАТОВ</h2>
-            <div class="search-box">
-                <i data-lucide="search" size="18"></i>
-                <input type="text" id="searchInput" placeholder="Поиск темы реферата...">
-            </div>
-            <div class="referat-list" id="referatList">
-                <div class="referat-card">
-                    <div>
-                        <h4 class="ref-name">Внутриличностный конфликт</h4>
-                        <p style="font-size: 11px; color: #888; margin-top: 5px;">DOCX • Академическая работа • Психология</p>
-                    </div>
-                    <a href="files/Реферат Внутриличностный конфликт.docx" class="download-btn" download>СКАЧАТЬ</a>
-                </div>
-                <div class="referat-card">
-                    <div>
-                        <h4 class="ref-name">Реформы государственного управления Екатерины II</h4>
-                        <p style="font-size: 11px; color: #888; margin-top: 5px;">DOCX • История России • ГОСТ</p>
-                    </div>
-                    <a href="files/Реферат  РЕФОРМЫ ГОСУДАРСТВЕННОГО УПРАВЛЕНИЯ ЕКАТЕРИНЫ 2.docx" class="download-btn" download>СКАЧАТЬ</a>
-                </div>
-            </div>
-        </section>
     </div>
 
     <footer>
         APEX STUDIO &copy; 2026 | DESIGNED BY ROMAN KULAKOV <br>
-        ЛОКАЦИЯ: Г. КРАСНОЯРСК (РАБОТАЕМ ПО ВСЕЙ РОССИИ ДИСТАНЦИОННО)
+        ЛОКАЦИЯ: КРАСНОЯРСК | РАБОТАЕМ ПО ВСЕЙ РОССИИ
     </footer>
 
     <script>
@@ -321,71 +226,13 @@
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        function toggleConverter() {
-            const modal = document.getElementById('converterModal');
-            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-
-        async function processPDF(file) {
-            if (!file) return;
-            const loader = document.getElementById('convLoader');
-            const status = document.getElementById('statusText');
-            
-            loader.style.display = 'block';
-            status.innerText = "Чтение документа...";
-
-            try {
-                const arrayBuffer = await file.arrayBuffer();
-                const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
-                let textContent = "";
-
-                for (let i = 1; i <= pdf.numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const text = await page.getTextContent();
-                    // Склеиваем текст страницы
-                    textContent += text.items.map(s => s.str).join(' ') + "<br><br>";
-                }
-
-                status.innerText = "Создание файла...";
-
-                // Формируем HTML структуру для Word с поддержкой UTF-8
-                const htmlHeader = `
-                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                    <head><meta charset='utf-8'><style>
-                        body { font-family: 'Times New Roman', serif; font-size: 14pt; line-height: 1.5; }
-                    </style></head><body>`;
-                const htmlFooter = "</body></html>";
-                const fullHtml = htmlHeader + textContent + htmlFooter;
-
-                // Используем BOM (\ufeff) для корректного отображения кириллицы в Word
-                const blob = new Blob(['\ufeff', fullHtml], { type: 'application/msword' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = file.name.replace(".pdf", ".doc");
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                
-                status.innerText = "Готово! Проверьте загрузки.";
-            } catch (e) {
-                console.error(e);
-                status.innerText = "Ошибка конвертации.";
-            } finally {
-                loader.style.display = 'none';
+        // Закрытие модалки по клику на фон
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
-
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.referat-card');
-            items.forEach(item => {
-                const title = item.querySelector('.ref-name').innerText.toLowerCase();
-                item.style.display = title.includes(term) ? 'flex' : 'none';
-            });
-        });
     </script>
 </body>
 </html>
