@@ -9,7 +9,6 @@
 
     <title>APEX STUDIO | Дизайн и помощь студентам</title>
 
-    <!-- Yandex.Metrika -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -25,7 +24,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* ПЕРЕМЕННЫЕ ТЕМЫ */
         :root { 
             --bg-start: #ffffff; --bg-end: #f4f7f6; --text-main: #000000; 
             --accent: #1a1a1a; --border: #e0e0e0; --card-bg: #ffffff;
@@ -39,13 +37,12 @@
         }
 
         html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s ease, color 0.3s ease; }
         body { background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%); color: var(--text-main); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
         
         header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--header-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
         .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
         
-        /* Логика смены логотипа */
         .logo-img { width: 35px; }
         .logo-white { display: none; }
         [data-theme="dark"] .logo-black { display: none; }
@@ -54,13 +51,10 @@
         .logo-box span { font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 2px; }
 
         .header-actions { display: flex; align-items: center; gap: 15px; }
-        
-        /* Кнопка темы */
         .theme-btn { background: none; border: 1px solid var(--border); color: var(--text-main); padding: 8px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
         .profile-trigger { cursor: pointer; background: var(--accent); color: var(--bg-start); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
 
-        /* ПОРТФОЛИО */
         .portfolio-section { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 30px 0; overflow: hidden; }
         .portfolio-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 10px 5%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .portfolio-slider::-webkit-scrollbar { display: none; }
@@ -69,18 +63,29 @@
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
         .portfolio-item:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
-        .hero { min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
+        .hero { min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
+        .main-wolf { width: 120px; margin-bottom: 20px; }
         
-        /* Большой логотип в Hero */
-        .main-wolf { width: 120px; margin-bottom: 20px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
-        [data-theme="dark"] .main-wolf { filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); }
+        h1 { font-family: 'Orbitron'; font-size: clamp(28px, 6vw, 48px); letter-spacing: 5px; margin-bottom: 10px; }
+        .hero-seo-text { font-family: 'Orbitron'; font-size: 11px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; max-width: 700px; }
 
-        h1 { font-family: 'Orbitron'; font-size: clamp(24px, 5vw, 42px); letter-spacing: 5px; margin-bottom: 10px; }
-        .hero-seo-text { font-family: 'Orbitron'; font-size: 11px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 25px; text-transform: uppercase; max-width: 700px; }
-
-        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 15px 30px; text-decoration: none; border: 2px solid var(--text-main); font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-main); transition: 0.3s; display: flex; align-items: center; gap: 8px; min-width: 180px; justify-content: center; }
-        .btn:hover { background: var(--text-main); color: var(--bg-start); transform: translateY(-3px); }
+        /* ОДИНОЧНАЯ АКЦЕНТНАЯ КНОПКА ВК */
+        .btn-vk-main { 
+            padding: 18px 50px; 
+            text-decoration: none; 
+            border: 2px solid var(--text-main); 
+            font-size: 12px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: var(--text-main); 
+            transition: 0.3s; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            letter-spacing: 2px;
+            font-family: 'Orbitron';
+        }
+        .btn-vk-main:hover { background: var(--text-main); color: var(--bg-start); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -96,9 +101,7 @@
         .modal-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border); text-align: center; max-width: 400px; width: 90%; position: relative; }
         .modal-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 2px solid var(--text-main); }
 
-        footer { text-align: center; padding: 40px 20px; font-family: 'Orbitron'; font-size: 9px; opacity: 0.5; letter-spacing: 1px; border-top: 1px solid var(--border); }
-
-        @media (max-width: 600px) { .portfolio-item { flex: 0 0 220px; } .btn { width: 100%; } }
+        footer { text-align: center; padding: 60px 20px; font-family: 'Orbitron'; font-size: 9px; opacity: 0.5; letter-spacing: 1px; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body data-theme="light">
@@ -146,10 +149,10 @@
         <img src="logo_white.png" alt="Apex Wolf" class="main-wolf logo-white">
         <h1>APEX STUDIO</h1>
         <h2 class="hero-seo-text">Минималистичный дизайн и сопровождение обучения в Красноярске</h2>
-        <div class="btn-group">
-            <a href="https://t.me/APEXSTUDIO1" target="_blank" class="btn"><i data-lucide="send" size="18"></i> Telegram</a>
-            <a href="https://vk.com/apexst" target="_blank" class="btn"><i data-lucide="message-circle" size="18"></i> Vkontakte</a>
-        </div>
+        
+        <a href="https://vk.com/apexst" target="_blank" class="btn-vk-main">
+            <i data-lucide="message-circle" size="20"></i> VKONTAKTE
+        </a>
     </section>
 
     <div class="container">
@@ -192,26 +195,19 @@
     <script>
         lucide.createIcons();
 
-        // Логика темной темы
-        const body = document.body;
-        const themeBtn = document.getElementById('theme-toggle');
-
-        function toggleTheme() {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            setTheme(isDark ? 'light' : 'dark');
-        }
-
         function setTheme(theme) {
-            body.setAttribute('data-theme', theme);
+            document.body.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            
-            // Смена иконки
             const iconName = theme === 'dark' ? 'sun' : 'moon';
-            themeBtn.innerHTML = `<i data-lucide="${iconName}" size="18"></i>`;
+            document.getElementById('theme-toggle').innerHTML = `<i data-lucide="${iconName}" size="18"></i>`;
             lucide.createIcons();
         }
 
-        // Загрузка сохраненной темы
+        function toggleTheme() {
+            const current = document.body.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
 
@@ -219,11 +215,7 @@
             const modal = document.getElementById('modal');
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) { modal.style.display = "none"; }
-        }
+        window.onclick = function(e) { if (e.target == document.getElementById('modal')) toggleModal(); }
     </script>
 </body>
 </html>
