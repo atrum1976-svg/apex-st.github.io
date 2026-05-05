@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OUT — THE PROJECT</title>
+    <title>OUT — PROJECT</title>
     <style>
-        /* Аскетичный дизайн в стиле APEX STUDIO */
         body, html {
             margin: 0;
             padding: 0;
@@ -13,7 +12,7 @@
             height: 100%;
             background-color: #000;
             color: #fff;
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -21,138 +20,136 @@
             text-align: center;
         }
 
-        /* Контейнер для логотипа */
-        .logo-container {
+        .logo-box {
+            margin-bottom: 10px;
+        }
+
+        .logo-box img {
+            width: 250px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Текстовое название под логотипом */
+        .logo-text {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            margin-top: -10px;
+            margin-bottom: 30px;
+            padding-left: 20px; /* Компенсация трекинга для центровки */
+        }
+
+        .status-tag {
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #444;
             margin-bottom: 40px;
         }
 
-        .logo-container img {
-            width: 300px; /* Отрегулируй под свой SVG */
-            height: auto;
-        }
-
-        .status-text {
-            font-size: 18px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            color: #fff;
-            font-weight: 300;
-        }
-
-        /* Таймер */
         #timer {
             display: flex;
-            gap: 40px;
-            font-size: 54px;
+            gap: 30px;
+            font-size: 48px;
             font-weight: 200;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
-        .timer-segment {
-            display: flex;
-            flex-direction: column;
+        .t-item { display: flex; flex-direction: column; }
+        .t-label { font-size: 9px; text-transform: uppercase; color: #333; margin-top: 5px; letter-spacing: 2px; }
+
+        .details-container {
+            max-width: 550px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 30px;
         }
 
-        .label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #555;
-            margin-top: 8px;
-        }
-
-        /* Секция подробностей */
-        .details-wrapper {
-            max-width: 600px;
-            border-top: 1px solid #222;
-            padding-top: 40px;
-        }
-
-        .details-title {
-            font-size: 16px;
-            text-transform: uppercase;
+        .trigger {
+            font-size: 13px;
             letter-spacing: 3px;
-            margin-bottom: 25px;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s;
-        }
-
-        .details-title:hover {
-            color: #fff;
-        }
-
-        #info {
-            display: none; /* Скрыто до клика */
-            font-size: 14px;
-            line-height: 1.8;
-            color: #aaa;
-            text-align: center;
-        }
-
-        .highlight {
-            color: #fff;
             text-transform: uppercase;
-            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+            transition: 0.3s;
         }
 
-        .final-call {
+        .trigger:hover { color: #fff; }
+
+        #description {
+            display: none;
             margin-top: 30px;
-            font-size: 16px;
-            letter-spacing: 2px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #888;
+        }
+
+        .punchline {
             color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .luck {
+            font-size: 16px;
+            color: #fff;
+            margin-top: 30px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="logo-container">
-        <!-- Твой главный логотип -->
-        <img src="OUT.svg" alt="OUT LOGO">
+    <div class="logo-box">
+        <img src="OUT.svg" alt="">
     </div>
+    <div class="logo-text">OUT</div>
 
-    <div class="status-text">Игра скоро начнется</div>
+    <div class="status-tag">Протокол инициализирован</div>
 
     <div id="timer">
-        <div class="timer-segment"><span id="days">00</span><span class="label">Days</span></div>
-        <div class="timer-segment"><span id="hours">00</span><span class="label">Hours</span></div>
-        <div class="timer-segment"><span id="minutes">00</span><span class="label">Minutes</span></div>
-        <div class="timer-segment"><span id="seconds">00</span><span class="label">Seconds</span></div>
+        <div class="t-item"><span id="days">00</span><span class="t-label">Days</span></div>
+        <div class="t-item"><span id="hours">00</span><span class="t-label">Hours</span></div>
+        <div class="t-item"><span id="minutes">00</span><span class="t-label">Minutes</span></div>
+        <div class="t-item"><span id="seconds">00</span><span class="t-label">Seconds</span></div>
     </div>
 
-    <div class="details-wrapper">
-        <div class="details-title" onclick="toggleDetails()">Подробнее [+]</div>
+    <div class="details-container">
+        <div class="trigger" onclick="showInfo()">Развернуть данные [+]</div>
         
-        <div id="info">
-            <p>Это мобильная игра с ограниченным количеством игроков.<br>
-            В течение месяца игроки будут соревноваться между собой.<br>
-            <span class="highlight">Одна ошибка и вылетел навсегда.</span></p>
+        <div id="description">
+            Это мобильная игра с ограниченным числом мест. <br>
+            В течение месяца — борьба за выживание в системе. <br>
+            <span class="punchline">Одна ошибка — вне игры. Навсегда.</span>
             
-            <div class="final-call">
+            <div class="luck">
                 Ждите анонса и удачи вам.
             </div>
         </div>
     </div>
 
     <script>
-        // Установка таймера на 1 месяц от текущего момента
-        const targetDate = new Date();
-        targetDate.setMonth(targetDate.getMonth() + 1);
+        // ФИКСИРОВАННАЯ ДАТА: 5 июня 2026
+        const targetDate = new Date("June 5, 2026 00:00:00").getTime();
 
-        function updateTimer() {
+        function countdown() {
             const now = new Date().getTime();
-            const diff = targetDate - now;
+            const gap = targetDate - now;
 
-            if (diff <= 0) {
-                document.getElementById("timer").innerHTML = "START";
+            if (gap <= 0) {
+                document.body.innerHTML = "<div style='font-size:50px; letter-spacing:10px;'>СИСТЕМА АКТИВИРОВАНА</div>";
                 return;
             }
 
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((gap % (1000 * 60)) / 1000);
 
             document.getElementById("days").innerText = d.toString().padStart(2, '0');
             document.getElementById("hours").innerText = h.toString().padStart(2, '0');
@@ -160,16 +157,12 @@
             document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
         }
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        setInterval(countdown, 1000);
+        countdown();
 
-        function toggleDetails() {
-            const info = document.getElementById("info");
-            if (info.style.display === "block") {
-                info.style.display = "none";
-            } else {
-                info.style.display = "block";
-            }
+        function showInfo() {
+            const desc = document.getElementById("description");
+            desc.style.display = (desc.style.display === "block") ? "none" : "block";
         }
     </script>
 </body>
