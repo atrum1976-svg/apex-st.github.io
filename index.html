@@ -3,219 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-
-    <title>APEX STUDIO | Дизайн и помощь студентам</title>
-
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107717559', 'ym');
-        ym(107717559, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/107717559" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <title>OUT — THE PROJECT</title>
     <style>
-        :root { 
-            --bg-start: #ffffff; --bg-end: #f4f7f6; --text-main: #000000; 
-            --accent: #1a1a1a; --border: #e0e0e0; --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.9);
+        /* Аскетичный дизайн в стиле APEX STUDIO */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        [data-theme="dark"] {
-            --bg-start: #0a0a0a; --bg-end: #121212; --text-main: #ffffff; 
-            --accent: #ffffff; --border: #222222; --card-bg: #111111;
-            --header-bg: rgba(10, 10, 10, 0.9);
+        /* Контейнер для логотипа */
+        .logo-container {
+            margin-bottom: 40px;
         }
 
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s ease, color 0.3s ease; }
-        body { background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%); color: var(--text-main); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
-        
-        header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--header-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
-        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-        
-        .logo-img { width: 35px; }
-        .logo-white { display: none; }
-        [data-theme="dark"] .logo-black { display: none; }
-        [data-theme="dark"] .logo-white { display: block; }
+        .logo-container img {
+            width: 300px; /* Отрегулируй под свой SVG */
+            height: auto;
+        }
 
-        .logo-box span { font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 2px; }
+        .status-text {
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #fff;
+            font-weight: 300;
+        }
 
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-        .theme-btn { background: none; border: 1px solid var(--border); color: var(--text-main); padding: 8px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        /* Таймер */
+        #timer {
+            display: flex;
+            gap: 40px;
+            font-size: 54px;
+            font-weight: 200;
+            margin-bottom: 60px;
+        }
 
-        .profile-trigger { cursor: pointer; background: var(--accent); color: var(--bg-start); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .timer-segment {
+            display: flex;
+            flex-direction: column;
+        }
 
-        .portfolio-section { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 30px 0; overflow: hidden; }
-        .portfolio-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 10px 5%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        .portfolio-slider::-webkit-scrollbar { display: none; }
-
-        .portfolio-item { flex: 0 0 280px; aspect-ratio: 1/1; scroll-snap-align: start; border: 1px solid var(--border); overflow: hidden; background: var(--bg-end); }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
-        .portfolio-item:hover img { filter: grayscale(0%); transform: scale(1.05); }
-
-        .hero { min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
-        .main-wolf { width: 120px; margin-bottom: 20px; }
-        
-        h1 { font-family: 'Orbitron'; font-size: clamp(28px, 6vw, 48px); letter-spacing: 5px; margin-bottom: 10px; }
-        .hero-seo-text { font-family: 'Orbitron'; font-size: 11px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; max-width: 700px; }
-
-        /* ОДИНОЧНАЯ АКЦЕНТНАЯ КНОПКА ВК */
-        .btn-vk-main { 
-            padding: 18px 50px; 
-            text-decoration: none; 
-            border: 2px solid var(--text-main); 
-            font-size: 12px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--text-main); 
-            transition: 0.3s; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
+        .label {
+            font-size: 10px;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            font-family: 'Orbitron';
+            color: #555;
+            margin-top: 8px;
         }
-        .btn-vk-main:hover { background: var(--text-main); color: var(--bg-start); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .category-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
-        .category-card h2 { font-family: 'Orbitron'; font-size: 0.85rem; margin-bottom: 30px; letter-spacing: 3px; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        /* Секция подробностей */
+        .details-wrapper {
+            max-width: 600px;
+            border-top: 1px solid #222;
+            padding-top: 40px;
+        }
 
-        .service-item { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
-        .service-info h4 { font-size: 14px; font-weight: 700; }
-        .service-info p { font-size: 11px; opacity: 0.6; margin-top: 4px; }
-        .price { font-weight: 700; font-size: 14px; white-space: nowrap; }
+        .details-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(10px); }
-        .modal-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border); text-align: center; max-width: 400px; width: 90%; position: relative; }
-        .modal-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 2px solid var(--text-main); }
+        .details-title:hover {
+            color: #fff;
+        }
 
-        footer { text-align: center; padding: 60px 20px; font-family: 'Orbitron'; font-size: 9px; opacity: 0.5; letter-spacing: 1px; border-top: 1px solid var(--border); }
+        #info {
+            display: none; /* Скрыто до клика */
+            font-size: 14px;
+            line-height: 1.8;
+            color: #aaa;
+            text-align: center;
+        }
+
+        .highlight {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .final-call {
+            margin-top: 30px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
-    <header>
-        <a href="#" class="logo-box">
-            <img src="logo.png" alt="APEX" class="logo-img logo-black">
-            <img src="logo_white.png" alt="APEX" class="logo-img logo-white">
-            <span>APEX STUDIO</span>
-        </a>
-        <div class="header-actions">
-            <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">
-                <i data-lucide="moon" size="18"></i>
-            </button>
-            <div class="profile-trigger" onclick="toggleModal()"><i data-lucide="user" size="16"></i><span>Основатель</span></div>
-        </div>
-    </header>
-
-    <section class="portfolio-section">
-        <div class="portfolio-slider">
-            <div class="portfolio-item"><img src="logo1.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+1'"></div>
-            <div class="portfolio-item"><img src="logo2.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+2'"></div>
-            <div class="portfolio-item"><img src="logo3.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+3'"></div>
-            <div class="portfolio-item"><img src="logo4.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+4'"></div>
-            <div class="portfolio-item"><img src="logo5.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+5'"></div>
-            <div class="portfolio-item"><img src="logo6.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+6'"></div>
-            <div class="portfolio-item"><img src="logo7.jpg" onerror="this.src='https://via.placeholder.com/300?text=LOGO+7'"></div>
-        </div>
-    </section>
-
-    <div class="modal-overlay" id="modal">
-        <div class="modal-card">
-            <i data-lucide="x" style="position: absolute; top:15px; right:15px; cursor:pointer;" onclick="toggleModal()"></i>
-            <img src="me.jpg" alt="Роман" class="modal-photo" onerror="this.src='https://via.placeholder.com/150'">
-            <h3>Кулаков Роман</h3>
-            <p style="font-size: 13px; opacity: 0.7; margin-top: 5px;">Графический дизайнер / Основатель APEX</p>
-            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border);">
-                <a href="mailto:atrum1976@gmail.com" style="color: var(--text-main); font-weight: 700; text-decoration: none; font-size: 14px;">atrum1976@gmail.com</a>
-            </div>
-        </div>
+    <div class="logo-container">
+        <!-- Твой главный логотип -->
+        <img src="OUT.svg" alt="OUT LOGO">
     </div>
 
-    <section class="hero">
-        <img src="logo.png" alt="Apex Wolf" class="main-wolf logo-black">
-        <img src="logo_white.png" alt="Apex Wolf" class="main-wolf logo-white">
-        <h1>APEX STUDIO</h1>
-        <h2 class="hero-seo-text">Минималистичный дизайн и сопровождение обучения в Красноярске</h2>
+    <div class="status-text">Игра скоро начнется</div>
+
+    <div id="timer">
+        <div class="timer-segment"><span id="days">00</span><span class="label">Days</span></div>
+        <div class="timer-segment"><span id="hours">00</span><span class="label">Hours</span></div>
+        <div class="timer-segment"><span id="minutes">00</span><span class="label">Minutes</span></div>
+        <div class="timer-segment"><span id="seconds">00</span><span class="label">Seconds</span></div>
+    </div>
+
+    <div class="details-wrapper">
+        <div class="details-title" onclick="toggleDetails()">Подробнее [+]</div>
         
-        <a href="https://vk.com/apexst" target="_blank" class="btn-vk-main">
-            <i data-lucide="message-circle" size="20"></i> VKONTAKTE
-        </a>
-    </section>
-
-    <div class="container">
-        <div class="grid">
-            <div class="category-card">
-                <h2>DESIGN & PHOTO</h2>
-                <div class="service-item">
-                    <div class="service-info"><h4>Логотип</h4><p>Создание фирменного знака</p></div>
-                    <div class="price">от 1 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Визитки</h4><p>Дизайн стильных макетов</p></div>
-                    <div class="price">от 1 000 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Фирменный стиль</h4><p>Полная визуальная концепция</p></div>
-                    <div class="price">от 10 000 ₽</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <h2>STUDY & DOCS</h2>
-                <div class="service-item">
-                    <div class="service-info"><h4>Рефераты</h4><p>Качественные работы по ГОСТу</p></div>
-                    <div class="price">от 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Курсовые работы</h4><p>Полное сопровождение</p></div>
-                    <div class="price">от 3 500 ₽</div>
-                </div>
-                <div class="service-item">
-                    <div class="service-info"><h4>Презентации</h4><p>Слайды для защиты проекта</p></div>
-                    <div class="price">от 500 ₽</div>
-                </div>
+        <div id="info">
+            <p>Это мобильная игра с ограниченным количеством игроков.<br>
+            В течение месяца игроки будут соревноваться между собой.<br>
+            <span class="highlight">Одна ошибка и вылетел навсегда.</span></p>
+            
+            <div class="final-call">
+                Ждите анонса и удачи вам.
             </div>
         </div>
     </div>
-
-    <footer>APEX STUDIO &copy; 2026 | DESIGNED BY ROMAN KULAKOV</footer>
 
     <script>
-        lucide.createIcons();
+        // Установка таймера на 1 месяц от текущего момента
+        const targetDate = new Date();
+        targetDate.setMonth(targetDate.getMonth() + 1);
 
-        function setTheme(theme) {
-            document.body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            const iconName = theme === 'dark' ? 'sun' : 'moon';
-            document.getElementById('theme-toggle').innerHTML = `<i data-lucide="${iconName}" size="18"></i>`;
-            lucide.createIcons();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById("timer").innerHTML = "START";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
         }
 
-        function toggleTheme() {
-            const current = document.body.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
 
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        setTheme(savedTheme);
-
-        function toggleModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        function toggleDetails() {
+            const info = document.getElementById("info");
+            if (info.style.display === "block") {
+                info.style.display = "none";
+            } else {
+                info.style.display = "block";
+            }
         }
-        window.onclick = function(e) { if (e.target == document.getElementById('modal')) toggleModal(); }
     </script>
 </body>
 </html>
