@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OUT — PROJECT</title>
+    <title>OUT — THE PROJECT</title>
     <style>
+        /* Аскетичный дизайн в стиле APEX STUDIO */
         body, html {
             margin: 0;
             padding: 0;
@@ -12,7 +13,7 @@
             height: 100%;
             background-color: #000;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,18 +21,19 @@
             text-align: center;
         }
 
+        /* Контейнер для логотипа */
         .logo-box {
             margin-bottom: 10px;
         }
 
         .logo-box img {
-            width: 250px;
+            width: 250px; /* Отрегулируй под свой SVG */
             height: auto;
             display: block;
             margin: 0 auto;
         }
 
-        /* Текстовое название под логотипом */
+        /* Текстовое название под логотипом (в твоем стиле) */
         .logo-text {
             font-size: 42px;
             font-weight: 900;
@@ -50,6 +52,7 @@
             margin-bottom: 40px;
         }
 
+        /* Таймер */
         #timer {
             display: flex;
             gap: 30px;
@@ -58,32 +61,46 @@
             margin-bottom: 70px;
         }
 
-        .t-item { display: flex; flex-direction: column; }
-        .t-label { font-size: 9px; text-transform: uppercase; color: #333; margin-top: 5px; letter-spacing: 2px; }
+        .timer-segment {
+            display: flex;
+            flex-direction: column;
+        }
 
-        .details-container {
+        .label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        /* Секция подробностей */
+        .details-wrapper {
             max-width: 550px;
             border-top: 1px solid #1a1a1a;
             padding-top: 30px;
         }
 
-        .trigger {
+        .details-title {
             font-size: 13px;
-            letter-spacing: 3px;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
             cursor: pointer;
             color: #666;
-            transition: 0.3s;
+            transition: color 0.3s;
         }
 
-        .trigger:hover { color: #fff; }
+        .details-title:hover {
+            color: #fff;
+        }
 
-        #description {
-            display: none;
-            margin-top: 30px;
+        #info {
+            display: none; /* Скрыто до клика */
             font-size: 15px;
             line-height: 1.7;
             color: #888;
+            text-align: center;
         }
 
         .punchline {
@@ -95,74 +112,85 @@
             letter-spacing: 1px;
         }
 
-        .luck {
-            font-size: 16px;
-            color: #fff;
+        .final-call {
             margin-top: 30px;
+            font-size: 16px;
             letter-spacing: 1px;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
     <div class="logo-box">
+        <!-- Твой главный логотип (SVG) -->
         <img src="OUT.svg" alt="">
     </div>
+    <!-- Текстовый акцент под логотипом -->
     <div class="logo-text">OUT</div>
 
-    <div class="status-tag">Протокол инициализирован</div>
+    <div class="status-tag">Инициализация протокола</div>
 
     <div id="timer">
-        <div class="t-item"><span id="days">00</span><span class="t-label">Days</span></div>
-        <div class="t-item"><span id="hours">00</span><span class="t-label">Hours</span></div>
-        <div class="t-item"><span id="minutes">00</span><span class="t-label">Minutes</span></div>
-        <div class="t-item"><span id="seconds">00</span><span class="t-label">Seconds</span></div>
+        <div class="timer-segment"><span id="days">00</span><span class="label">Days</span></div>
+        <div class="timer-segment"><span id="hours">00</span><span class="label">Hours</span></div>
+        <div class="timer-segment"><span id="minutes">00</span><span class="label">Minutes</span></div>
+        <div class="timer-segment"><span id="seconds">00</span><span class="label">Seconds</span></div>
     </div>
 
-    <div class="details-container">
-        <div class="trigger" onclick="showInfo()">Развернуть данные [+]</div>
+    <div class="details-wrapper">
+        <div class="details-title" onclick="toggleDetails()">Подробнее [+]</div>
         
-        <div id="description">
-            Это мобильная игра с ограниченным числом мест. <br>
-            В течение месяца — борьба за выживание в системе. <br>
-            <span class="punchline">Одна ошибка — вне игры. Навсегда.</span>
+        <div id="info">
+            <p>Это мобильная игра с ограниченным числом мест.<br>
+            В течение месяца — борьба за выживание в системе.<br>
+            <span class="punchline">Одна ошибка — вне игры. Навсегда.</span></p>
             
-            <div class="luck">
+            <div class="final-call">
                 Ждите анонса и удачи вам.
             </div>
         </div>
     </div>
 
     <script>
-        // ФИКСИРОВАННАЯ ДАТА: 5 июня 2026
-        const targetDate = new Date("June 5, 2026 00:00:00").getTime();
+        // Установка фиксированной даты: 1 июня 2026 года, 00:00:00
+        const targetDate = new Date("June 1, 2026 00:00:00").getTime();
 
-        function countdown() {
+        function updateTimer() {
             const now = new Date().getTime();
-            const gap = targetDate - now;
+            const diff = targetDate - now;
 
-            if (gap <= 0) {
-                document.body.innerHTML = "<div style='font-size:50px; letter-spacing:10px;'>СИСТЕМА АКТИВИРОВАНА</div>";
+            // Если время вышло
+            if (diff <= 0) {
+                document.getElementById("timer").innerHTML = "<div style='font-size:40px; letter-spacing:10px;'>СИСТЕМА АКТИВИРОВАНА</div>";
                 return;
             }
 
-            const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-            const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((gap % (1000 * 60)) / 1000);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
 
+            // Добавляем ведущий ноль, если число меньше 10
             document.getElementById("days").innerText = d.toString().padStart(2, '0');
             document.getElementById("hours").innerText = h.toString().padStart(2, '0');
             document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
             document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
         }
 
-        setInterval(countdown, 1000);
-        countdown();
+        // Обновляем таймер каждую секунду
+        setInterval(updateTimer, 1000);
+        
+        // Запускаем сразу, чтобы не ждать секунду до первого обновления
+        updateTimer();
 
-        function showInfo() {
-            const desc = document.getElementById("description");
-            desc.style.display = (desc.style.display === "block") ? "none" : "block";
+        function toggleDetails() {
+            const info = document.getElementById("info");
+            if (info.style.display === "block") {
+                info.style.display = "none";
+            } else {
+                info.style.display = "block";
+            }
         }
     </script>
 </body>
